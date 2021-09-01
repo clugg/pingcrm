@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :class="$props.class">
     <label v-if="label" class="form-label" :for="id">{{ label }}:</label>
     <select :id="id" ref="input" v-model="selected" v-bind="$attrs" class="form-select" :class="{ error: error }">
       <slot />
@@ -12,20 +12,21 @@
 export default {
   inheritAttrs: false,
   props: {
-    id: {
-      type: String,
-      default() {
-        return `select-input-${this._uid}`
-      },
-    },
-    value: [String, Number, Boolean],
+    modelValue: [String, Number, Boolean],
     label: String,
     error: String,
+    class: String,
   },
+  emits: ['update:modelValue'],
   data() {
     return {
-      selected: this.value,
+      selected: this.modelValue,
     }
+  },
+  computed: {
+    id: function() {
+      return this.label.replace(/\s+/g, '')
+    },
   },
   watch: {
     selected(selected) {

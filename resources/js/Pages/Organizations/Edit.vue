@@ -1,8 +1,8 @@
 <template>
   <div>
     <h1 class="mb-8 font-bold text-3xl">
-      <inertia-link class="text-indigo-400 hover:text-indigo-600" :href="route('organizations')">Organizations</inertia-link>
-      <span class="text-indigo-400 font-medium">/</span>
+      <Link class="text-indigo-400 hover:text-indigo-600" :href="route('organizations')">Organizations</Link>
+      <span class="text-indigo-400 font-medium"> / </span>
       {{ form.name }}
     </h1>
     <trashed-message v-if="organization.deleted_at" class="mb-6" @restore="restore">
@@ -40,25 +40,25 @@
         </tr>
         <tr v-for="contact in organization.contacts" :key="contact.id" class="hover:bg-gray-100 focus-within:bg-gray-100">
           <td class="border-t">
-            <inertia-link class="px-6 py-4 flex items-center focus:text-indigo-500" :href="route('contacts.edit', contact.id)">
+            <Link class="px-6 py-4 flex items-center focus:text-indigo-500" :href="route('contacts.edit', contact.id)">
               {{ contact.name }}
               <icon v-if="contact.deleted_at" name="trash" class="flex-shrink-0 w-3 h-3 fill-gray-400 ml-2" />
-            </inertia-link>
+            </Link>
           </td>
           <td class="border-t">
-            <inertia-link class="px-6 py-4 flex items-center" :href="route('contacts.edit', contact.id)" tabindex="-1">
+            <Link class="px-6 py-4 flex items-center" :href="route('contacts.edit', contact.id)" tabindex="-1">
               {{ contact.city }}
-            </inertia-link>
+            </Link>
           </td>
           <td class="border-t">
-            <inertia-link class="px-6 py-4 flex items-center" :href="route('contacts.edit', contact.id)" tabindex="-1">
+            <Link class="px-6 py-4 flex items-center" :href="route('contacts.edit', contact.id)" tabindex="-1">
               {{ contact.phone }}
-            </inertia-link>
+            </Link>
           </td>
           <td class="border-t w-px">
-            <inertia-link class="px-4 flex items-center" :href="route('contacts.edit', contact.id)" tabindex="-1">
+            <Link class="px-4 flex items-center" :href="route('contacts.edit', contact.id)" tabindex="-1">
               <icon name="cheveron-right" class="block w-6 h-6 fill-gray-400" />
-            </inertia-link>
+            </Link>
           </td>
         </tr>
         <tr v-if="organization.contacts.length === 0">
@@ -76,12 +76,14 @@ import TextInput from '@/Shared/TextInput'
 import SelectInput from '@/Shared/SelectInput'
 import LoadingButton from '@/Shared/LoadingButton'
 import TrashedMessage from '@/Shared/TrashedMessage'
+import { Link } from '@inertiajs/inertia-vue3'
 
 export default {
   metaInfo() {
     return { title: this.form.name }
   },
   components: {
+    Link,
     Icon,
     LoadingButton,
     SelectInput,

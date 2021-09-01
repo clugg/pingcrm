@@ -2,8 +2,8 @@
   <div>
     <div class="mb-8 flex justify-start max-w-3xl">
       <h1 class="font-bold text-3xl">
-        <inertia-link class="text-indigo-400 hover:text-indigo-600" :href="route('users')">Users</inertia-link>
-        <span class="text-indigo-400 font-medium">/</span>
+        <Link class="text-indigo-400 hover:text-indigo-600" :href="route('users')">Users</Link>
+        <span class="text-indigo-400 font-medium"> / </span>
         {{ form.first_name }} {{ form.last_name }}
       </h1>
       <img v-if="user.photo" class="block w-8 h-8 rounded-full ml-4" :src="user.photo" />
@@ -40,6 +40,7 @@ import FileInput from '@/Shared/FileInput'
 import SelectInput from '@/Shared/SelectInput'
 import LoadingButton from '@/Shared/LoadingButton'
 import TrashedMessage from '@/Shared/TrashedMessage'
+import { Link } from '@inertiajs/inertia-vue3'
 
 export default {
   metaInfo() {
@@ -53,6 +54,7 @@ export default {
     SelectInput,
     TextInput,
     TrashedMessage,
+    Link,
   },
   layout: Layout,
   props: {

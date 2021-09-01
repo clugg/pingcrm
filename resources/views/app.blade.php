@@ -17,6 +17,8 @@
 </head>
 <body class="font-sans leading-none text-gray-700 antialiased">
 
+<div id="dropdown-overlay"></div>
+
 @inertia
 
 </body>

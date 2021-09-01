@@ -1,8 +1,8 @@
 <template>
   <div>
     <h1 class="mb-8 font-bold text-3xl">
-      <inertia-link class="text-indigo-400 hover:text-indigo-600" :href="route('contacts')">Contacts</inertia-link>
-      <span class="text-indigo-400 font-medium">/</span>
+      <Link class="text-indigo-400 hover:text-indigo-600" :href="route('contacts')">Contacts</Link>
+      <span class="text-indigo-400 font-medium"> / </span>
       {{ form.first_name }} {{ form.last_name }}
     </h1>
     <trashed-message v-if="contact.deleted_at" class="mb-6" @restore="restore">
@@ -44,6 +44,7 @@ import TextInput from '@/Shared/TextInput'
 import SelectInput from '@/Shared/SelectInput'
 import LoadingButton from '@/Shared/LoadingButton'
 import TrashedMessage from '@/Shared/TrashedMessage'
+import { Link } from '@inertiajs/inertia-vue3'
 
 export default {
   metaInfo() {
@@ -52,6 +53,7 @@ export default {
     }
   },
   components: {
+    Link,
     LoadingButton,
     SelectInput,
     TextInput,

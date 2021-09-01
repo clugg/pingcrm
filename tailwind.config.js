@@ -8,6 +8,7 @@ module.exports = {
     './resources/**/*.js',
     './resources/**/*.vue',
   ],
+  mode: 'jit',
   darkMode: false, // or 'media' or 'class'
   theme: {
     colors: {
@@ -41,11 +42,6 @@ module.exports = {
         outline: '0 0 0 2px ' + theme('colors.indigo.500'),
       }),
       fill: theme => theme('colors'),
-    },
-  },
-  variants: {
-    extend: {
-      fill: ['focus', 'group-hover'],
     },
   },
   plugins: [],
